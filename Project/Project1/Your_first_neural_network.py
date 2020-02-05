@@ -155,7 +155,7 @@ val_features, val_targets = features[-60*24:], targets[-60*24:]
 # 
 #   
 
-# In[27]:
+# In[11]:
 
 
 class NeuralNetwork(object):
@@ -256,7 +256,7 @@ class NeuralNetwork(object):
         return final_outputs
 
 
-# In[ ]:
+# In[12]:
 
 
 #计算平方误差
@@ -268,7 +268,7 @@ def MSE(y, Y):
 # 
 # 运行这些单元测试，检查你的网络实现是否正确。这样可以帮助你确保网络已正确实现，然后再开始训练网络。这些测试必须成功才能通过此项目。
 
-# In[30]:
+# In[13]:
 
 
 import unittest
@@ -351,14 +351,14 @@ unittest.TextTestRunner().run(suite);
 # 
 # 隐藏节点越多，模型的预测结果就越准确。尝试不同的隐藏节点的数量，看看对性能有何影响。你可以查看损失字典，寻找网络性能指标。如果隐藏单元的数量太少，那么模型就没有足够的空间进行学习，如果太多，则学习方向就有太多的选择。选择隐藏单元数量的技巧在于找到合适的平衡点。
 
-# In[86]:
+# In[17]:
 
 
 import sys
 
 ### TODO:Set the hyperparameters here, you need to change the defalut to get a better solution ###
-iterations = 1800
-learning_rate = 0.7
+iterations = 2000
+learning_rate = 0.8
 hidden_nodes = 12
 output_nodes = 1
 
@@ -383,7 +383,7 @@ for ii in range(iterations):
     losses['validation'].append(val_loss);
 
 
-# In[87]:
+# In[18]:
 
 
 plt.plot(losses['train'], label='Training loss')
@@ -396,7 +396,7 @@ _ = plt.ylim()
 # 
 # 使用测试数据看看网络对数据建模的效果如何。如果完全错了，请确保网络中的每步都正确实现。
 
-# In[88]:
+# In[19]:
 
 
 fig, ax = plt.subplots(figsize=(8,4))
@@ -424,7 +424,7 @@ _ = ax.set_xticklabels(dates[12::24], rotation=45)
 # #### 请将你的答案填写在下方
 # 
 
-# 模型对数据的预测效果不太好，得到的预测结果不能够完全和实际的数据对应上，特别是后半个月的数据不容易拟合。
+# 模型对数据的预测效果不太好，得到的预测结果不能够完全和实际的数据对应上，特别是后半个月的数据不容易拟合。可能因为十二月的后半月有圣诞节，且处于假期阶段，在构建网络前，对数据进行处理时没考虑假期的情况。
 
 # In[ ]:
 
